@@ -4,6 +4,8 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -11,6 +13,8 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class AopAspect {
+    private static final Logger log = LoggerFactory.getLogger(AopAspect.class);
+
     @Pointcut("@annotation(com.example.aop.AopAnnotation)")
     public void myPointcut() {
     }
@@ -18,7 +22,7 @@ public class AopAspect {
     @Before("myPointcut()")
     public void doBefore(JoinPoint joinPoint) throws Exception {
         String description = getDescription(joinPoint);
-        System.out.println("doBefore executed， value = " + description);
+        log.info("doBefore executed， value = " + description);
     }
 
     private String getDescription(JoinPoint joinPoint) throws Exception {

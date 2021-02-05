@@ -1,11 +1,14 @@
 package com.example.aop;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AopService {
+    private static final Logger log = LoggerFactory.getLogger(AopService.class);
     @AopAnnotation("我是何波")
     public void testAop(){
-        System.out.println("testAop executed");
+        log.info("testAop executed");
     }
 }
