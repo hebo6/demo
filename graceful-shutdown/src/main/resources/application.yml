@@ -10,5 +10,5 @@ management:
   endpoints:
     web:
       exposure:
-        # 3. 必须开启, 才能调用 /actuator/shutdown
-        include: "*"
+        # 3. 必须暴露此接口, 才能调用 /actuator/shutdown
+        include: shutdown
