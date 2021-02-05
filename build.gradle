@@ -1,0 +1,7 @@
+subprojects {
+    afterEvaluate {
+        bootRun {
+            systemProperties "spring.output.ansi.enabled": "ALWAYS"
+        }
+    }
+}
