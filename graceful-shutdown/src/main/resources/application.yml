@@ -1,0 +1,14 @@
+server:
+  # 1. 开启优雅停机
+  shutdown: graceful
+# actuator 监控配置
+management:
+  endpoint:
+    shutdown:
+      # 2. 启用actuator方式关机
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        # 3. 必须开启, 才能调用 /actuator/shutdown
+        include: "*"

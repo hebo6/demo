@@ -1,0 +1,4 @@
+logging:
+  file:
+    # 测试 spring-boot-properties-migrator
+    max-size: 10mb
