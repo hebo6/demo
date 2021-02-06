@@ -1,7 +1,11 @@
 subprojects {
     afterEvaluate {
-        bootRun {
-            systemProperties "spring.output.ansi.enabled": "ALWAYS"
+        def rootRunTask = getTasksByName('bootRun', false)
+        if (!rootRunTask.isEmpty()) {
+            println rootRunTask
+            bootRun {
+                systemProperties "spring.output.ansi.enabled": "ALWAYS"
+            }
         }
     }
 }
