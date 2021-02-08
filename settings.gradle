@@ -3,4 +3,5 @@ include 'graceful-shutdown'
 include 'properties-migrator'
 include 'aop'
 include 'javafx'
+include 'charset'
 

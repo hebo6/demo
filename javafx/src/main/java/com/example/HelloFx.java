@@ -16,7 +16,7 @@ public class HelloFx {
         myFrame = new JFrame("JEditorPane Test");
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.setSize(960, 540);
-        myFrame.setLocation(1320, 1280);
+        myFrame.setLocation(500, 500);
         JEditorPane myPane = new JEditorPane();
         myPane.setContentType("text/html");
         myPane.setText(text);
