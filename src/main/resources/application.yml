@@ -1,0 +1,22 @@
+server:
+  # 1. 开启优雅停机
+  shutdown: graceful
+# actuator 监控配置
+management:
+  endpoint:
+    shutdown:
+      # 2. 启用actuator方式关机
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        # 3. 必须暴露此接口, 才能调用 /actuator/shutdown
+        include: shutdown
+logging:
+  file:
+    # 测试 spring-boot-properties-migrator
+    max-size: 10mb
+spring:
+  security:
+    user:
+      password: 123456
