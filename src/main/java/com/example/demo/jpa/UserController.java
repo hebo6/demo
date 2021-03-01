@@ -1,9 +1,6 @@
 package com.example.demo.jpa;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +15,11 @@ public class UserController {
     @GetMapping("users")
     public List<User> findUsers() {
         return userService.findUsers();
+    }
+
+    @GetMapping("user/{id}")
+    public User findUserById(@PathVariable Long id) {
+        return userService.findUserById(id);
     }
 
     @PostMapping("users")
