@@ -1,9 +1,9 @@
 package com.example.demo.jpa;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -19,5 +19,10 @@ public class UserService {
 
     public List<User> insertUsers(List<User> users) {
         return userRepository.saveAll(users);
+    }
+
+    public User findUserById(Long id) {
+        Optional<User> optional = userRepository.findById(id);
+        return optional.orElse(null);
     }
 }
