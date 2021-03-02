@@ -1,6 +1,5 @@
 package com.example.demo.security;
 
-import com.example.demo.jpa.User;
 import com.example.demo.jpa.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +17,9 @@ public class SecurityController {
     @GetMapping
     public String findResources() {
         String answer = "You are now accessing secure resources";
-        User user = userService.findUserById(1L);
-        if (user != null) {
-            answer = "Hello, " + user.getName() + ". " + answer;
+        String name = userService.whoAmI();
+        if (name != null) {
+            answer = "Hello, " + name + ". " + answer;
         }
         return answer;
     }

@@ -15,7 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ;
         configForH2console(http);
         configForActuator(http);
-        //todo find the way to be able to accept post request while csrf is enabled.
+        //fixme find the way to be able to accept post request while csrf is enabled.
         http.csrf().disable();
     }
 

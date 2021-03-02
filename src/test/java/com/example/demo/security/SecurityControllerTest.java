@@ -29,7 +29,7 @@ class SecurityControllerTest {
     void setUp() {
         User user = new User();
         user.setName(mockName);
-        when(service.findUserById(1L)).thenReturn(user);
+        when(service.whoAmI()).thenReturn(mockName);
     }
 
     @Test

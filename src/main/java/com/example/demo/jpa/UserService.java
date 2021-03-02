@@ -33,4 +33,9 @@ public class UserService {
         Optional<User> optional = userRepository.findById(id);
         return optional.orElse(null);
     }
+
+    public String whoAmI() {
+        User user = findUserById(1L);
+        return user != null ? user.getName() : "No name";
+    }
 }

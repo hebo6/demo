@@ -38,3 +38,5 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+demo:
+  name: demo

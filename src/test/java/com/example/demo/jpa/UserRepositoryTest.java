@@ -9,6 +9,9 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * 优势: 使用的是内存中的临时数据库, 并不是读取application.yml配置的数据库
+ */
 @DataJpaTest
 class UserRepositoryTest {
     @Autowired
