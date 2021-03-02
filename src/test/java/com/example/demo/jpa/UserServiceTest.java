@@ -52,7 +52,10 @@ class UserServiceTest {
         UserService spyService = Mockito.spy(userService);
         String spyName = "Spy";
         doReturn(new User().setName(spyName)).when(spyService).findUserById(any());
-        //fixme 为什么下面的语句会报错
+        //为什么下面的语句会报错?
+        //因为when/thenReturn会执行findUserById(), 而doReturn/when不会执行
+        //总是使用doReturn/when,而不是when/thenReturn, 因为第一种适用所有情况,而第二种不适用与某些情况(如void方法)
+        //参考: https://stackoverflow.com/a/20360269
 //        when(spyService.findUserById(any())).thenReturn(new User().setName(spyName));
         String name = spyService.whoAmI();
         assertEquals(spyName, name);
