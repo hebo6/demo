@@ -13,8 +13,8 @@ public class PropertiesController {
         this.demoProperties = demoProperties;
     }
 
-    @GetMapping("name")
-    public String selectName() {
-        return demoProperties.getName();
+    @GetMapping("prop")
+    public DemoProperties selectDemoProperties() {
+        return demoProperties;
     }
 }
