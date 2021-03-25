@@ -1,5 +1,6 @@
 package com.example.demo.jpa;
 
+import com.example.demo.jpa.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,7 +24,7 @@ class UserServiceTest {
     UserRepository userRepository;
     @Autowired
     UserService userService;
-    String mockName = "Mock";
+    final String mockName = "Mock";
 
     @BeforeEach
     void setUp() {

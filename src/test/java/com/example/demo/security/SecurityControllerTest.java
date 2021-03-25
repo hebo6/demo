@@ -1,7 +1,7 @@
 package com.example.demo.security;
 
-import com.example.demo.jpa.User;
 import com.example.demo.jpa.UserService;
+import com.example.demo.jpa.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

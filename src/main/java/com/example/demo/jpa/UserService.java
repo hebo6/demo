@@ -1,5 +1,6 @@
 package com.example.demo.jpa;
 
+import com.example.demo.jpa.entity.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

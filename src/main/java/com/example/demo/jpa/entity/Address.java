@@ -1,4 +1,4 @@
-package com.example.demo.jpa;
+package com.example.demo.jpa.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -11,10 +11,10 @@ import javax.persistence.Id;
 @Data
 @Accessors(chain = true)
 @Entity
-public class User {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private Integer age;
+    private String city;
+    private String country;
 }

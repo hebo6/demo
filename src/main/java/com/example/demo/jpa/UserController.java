@@ -1,5 +1,6 @@
 package com.example.demo.jpa;
 
+import com.example.demo.jpa.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
