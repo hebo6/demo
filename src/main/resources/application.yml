@@ -34,7 +34,7 @@ spring:
       # 访问 /h2-console 打开h2控制台
       enabled: true
   jpa:
-    open-in-view: false
+    open-in-view: true
     show-sql: true
     hibernate:
       ddl-auto: update
