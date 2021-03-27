@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping("users")
-    public List<User> insertUsers(@RequestBody List<User> users) {
-        return userService.insertUsers(users);
+    public List<User> saveUsers(@RequestBody List<User> users) {
+        return userService.saveUsers(users);
     }
 }

@@ -27,7 +27,7 @@ spring:
     #  驱动
     driver-class-name: org.h2.Driver
     # h2 内存数据库 内存模式连接配置 库名: test
-    url: jdbc:h2:~/test
+    url: jdbc:h2:mem:test
     username: sa
   h2:
     console:

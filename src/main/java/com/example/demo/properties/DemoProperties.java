@@ -8,5 +8,8 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties("demo")
 @Data
 public class DemoProperties {
-    private String name;
+    /**
+     * 设置name属性
+     */
+    private String name = "default";
 }

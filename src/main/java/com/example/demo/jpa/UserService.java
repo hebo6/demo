@@ -20,7 +20,7 @@ public class UserService {
     }
 
     @Transactional
-    public List<User> insertUsers(List<User> users) {
+    public List<User> saveUsers(List<User> users) {
         List<User> savedUsers = userRepository.saveAll(users);
         for (User e : savedUsers) {
             if ("bad".equals(e.getName())) {
