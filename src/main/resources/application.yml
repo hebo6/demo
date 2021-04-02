@@ -40,3 +40,8 @@ spring:
       ddl-auto: update
 demo:
   name: demo
+
+
+dissociated:
+  name: 1
+

@@ -1,0 +1,17 @@
+{
+
+  "properties": [
+
+    {
+
+      "name": "dissociated.name",
+
+      "type": "java.lang.String",
+
+      "description": "Description for dissociated.name."
+
+    }
+
+  ]
+
+}
