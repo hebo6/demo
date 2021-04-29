@@ -11,6 +11,7 @@ import java.lang.reflect.Modifier;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 
 @Slf4j
 public class TextUtils {
@@ -34,35 +35,81 @@ public class TextUtils {
     }
 
     /**
-     * 实现懒加载的Map
+     * @param processor 函数接口,用于自定义get方法
+     * @see StringSubstitutor
      */
-    private static class LazyMap implements Map<String, Object> {
+    public static String replace(String templateString, Function<String, Object> processor) {
+        Map<String, Object> valuesMap = (GetterMap) key -> processor.apply(String.valueOf(key));
+        return new StringSubstitutor(valuesMap).replace(templateString);
+    }
+
+    /**
+     * 只有get()需要实现的map接口
+     */
+    private interface GetterMap extends Map<String, Object> {
+        @Override
+        default int size() {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        default boolean isEmpty() {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        default boolean containsKey(Object key) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        default boolean containsValue(Object value) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        default Object put(String key, Object value) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        default Object remove(Object key) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        default void putAll(Map<? extends String, ?> m) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        default void clear() {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        default Set<String> keySet() {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        default Collection<Object> values() {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        default Set<Entry<String, Object>> entrySet() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    private static class LazyMap implements GetterMap {
         private final Map<String, Object> priorMap;
         private final Object[] sources;
 
         public LazyMap(Map<String, Object> priorMap, Object... sources) {
             this.priorMap = priorMap;
             this.sources = sources;
-        }
-
-        @Override
-        public int size() {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public boolean isEmpty() {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public boolean containsKey(Object key) {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public boolean containsValue(Object value) {
-            throw new UnsupportedOperationException();
         }
 
         @Override
@@ -112,41 +159,6 @@ public class TextUtils {
                 log.error("唤醒方法发送异常", e);
             }
             return invoke;
-        }
-
-        @Override
-        public Object put(String key, Object value) {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public Object remove(Object key) {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public void putAll(Map<? extends String, ?> m) {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public void clear() {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public Set<String> keySet() {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public Collection<Object> values() {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public Set<Entry<String, Object>> entrySet() {
-            throw new UnsupportedOperationException();
         }
     }
 }
