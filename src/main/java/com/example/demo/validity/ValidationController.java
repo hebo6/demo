@@ -5,6 +5,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import java.util.List;
 
 /**
  * <b>单个参数</b>校验需要在<b>参数上</b>增加校验注解, 并在<b>类</b>上标注{@link Validated}. 并且类上注解只对{@link RequestParam}和
@@ -21,6 +23,11 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("validation")
 public class ValidationController {
+    @GetMapping("array")
+    public String arrayValidation(@RequestParam(required = false) List<@Positive(message = "ages不能为负数") Integer> ages) {
+        return "ok, ages = " + ages;
+    }
+
     @GetMapping
     public String getValidation(@NotNull(message = "requestParam不能为空") @RequestParam(required = false) String requestParam) {
         return "ok, requestParam = " + requestParam;
