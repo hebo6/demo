@@ -23,8 +23,8 @@ import java.util.List;
 @RestController
 @RequestMapping("validation")
 public class ValidationController {
-    @GetMapping("array")
-    public String arrayValidation(@RequestParam(required = false) List<@Positive(message = "ages不能为负数") Integer> ages) {
+    @GetMapping("list")
+    public String listValidation(@RequestParam(required = false) List<@Positive(message = "ages不能为负数") Integer> ages) {
         return "ok, ages = " + ages;
     }
 
