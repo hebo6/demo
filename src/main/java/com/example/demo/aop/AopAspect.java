@@ -8,6 +8,18 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
+/**
+ * 执行顺序是
+ * <code>
+ * Around(){
+ * proceed(){
+ * Before();
+ * exec();
+ * After();
+ * }
+ * }
+ * </code>
+ */
 @Aspect
 @Component
 @Slf4j
