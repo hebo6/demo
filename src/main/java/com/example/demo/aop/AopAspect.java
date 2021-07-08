@@ -40,13 +40,28 @@ public class AopAspect {
         log.info("After Aop， value = " + description);
     }
 
+    @AfterReturning("myPointcut()")
+    public void doAfterReturning(JoinPoint joinPoint) throws Exception {
+        String description = getDescription(joinPoint);
+        log.info("AfterReturning Aop， value = " + description);
+    }
+
+    @AfterThrowing("myPointcut()")
+    public void doAfterThrowing(JoinPoint joinPoint) throws Exception {
+        String description = getDescription(joinPoint);
+        log.info("AfterThrowing Aop， value = " + description);
+    }
+
     @Around(value = "myPointcut()", argNames = "pjp")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
         log.info("Around Aop start");
         Object[] args = pjp.getArgs();
         for (int i = 0; i < args.length; i++) {
-            args[i] += "(Aop proceed arg)";
+            if (args[i] != null) {
+                args[i] += "(Aop proceed arg)";
+            }
         }
+        //实际执行的真实方法
         Object proceed = pjp.proceed(args);
         log.info("Around Aop end");
         return proceed + "(Aop proceed result)";
