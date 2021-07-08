@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
  * proceed(){
  * Before();
  * exec();
+ * AfterReturning() || AfterThrowing();
  * After();
  * }
  * }
