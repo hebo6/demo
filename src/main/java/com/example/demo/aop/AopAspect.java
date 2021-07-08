@@ -42,9 +42,14 @@ public class AopAspect {
 
     @Around(value = "myPointcut()", argNames = "pjp")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-        pjp.proceed();
-        log.info("Around Aop");
-        return null;
+        log.info("Around Aop start");
+        Object[] args = pjp.getArgs();
+        for (int i = 0; i < args.length; i++) {
+            args[i] += "(Aop proceed arg)";
+        }
+        Object proceed = pjp.proceed(args);
+        log.info("Around Aop end");
+        return proceed + "(Aop proceed result)";
     }
 
     private String getDescription(JoinPoint joinPoint) throws Exception {

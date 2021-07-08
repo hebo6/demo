@@ -5,15 +5,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AopController {
-    private final AopService aopService;
-
-    public AopController(AopService aopService) {
-        this.aopService = aopService;
-    }
-
+    @AopAnnotation("I'm annotation")
     @GetMapping("aop")
-    public String aop() {
-        aopService.aop();
-        return "Done, Please see console log";
+    public String aop(String name) {
+        System.out.println("aop method executed");
+        System.out.println("name = " + name);
+        return "OK, name = " + name;
     }
 }
