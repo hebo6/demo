@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = "16"
 
 configurations {
     compileOnly {
@@ -45,3 +45,4 @@ test {
 
 //let META-INF\additional-spring-configuration-metadata.json valid after task compileJava executed.
 compileJava.inputs.files(processResources)
+targetCompatibility = JavaVersion.VERSION_16
