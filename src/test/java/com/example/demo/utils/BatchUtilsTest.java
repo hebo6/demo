@@ -36,4 +36,17 @@ class BatchUtilsTest {
         batchCount++;
         return s.stream().map(String::valueOf).toList();
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 10, 100, 1000, 10000, 100000, 5, 55, 555, 5555, 5555})
+    void batchConsume(int total) {
+        List<Integer> feeds = new ArrayList<>();
+        for (int i = 0; i < total; i++) {
+            feeds.add(i);
+        }
+
+        BatchUtils.batchConsume(feeds, BatchUtilsTest::processor, batchSize);
+
+        Assertions.assertEquals((total - 1) / batchSize + 1, batchCount, "批量执行次数错误");
+    }
 }
