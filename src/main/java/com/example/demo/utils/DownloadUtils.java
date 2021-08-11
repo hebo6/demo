@@ -12,7 +12,7 @@ public class DownloadUtils {
     /**
      * 下载文件能正常显示中文
      */
-    public static void download(HttpServletResponse response, String fileName, byte[] bytes) throws IOException {
+    public static void download(byte[] bytes, String fileName, HttpServletResponse response) throws IOException {
         response.setHeader("Content-Disposition",
                 "attachment; filename=" + URLEncoder.encode(fileName, StandardCharsets.UTF_8)
                         + "; filename*=UTF-8''" + URLEncoder.encode(fileName, StandardCharsets.UTF_8));

@@ -16,6 +16,6 @@ public class DownloadController {
     public void downloadChineseFileName(HttpServletResponse response) throws IOException {
         String fileName = "我是中文名.txt";
         byte[] bytes = "hello，我是内容！啊啊啊".getBytes(StandardCharsets.UTF_8);
-        DownloadUtils.download(response, fileName, bytes);
+        DownloadUtils.download(bytes, fileName, response);
     }
 }
