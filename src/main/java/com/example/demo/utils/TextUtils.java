@@ -1,5 +1,7 @@
 package com.example.demo.utils;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.text.StringSubstitutor;
 import org.springframework.beans.BeanUtils;
@@ -13,10 +15,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Slf4j
 public class TextUtils {
-    private TextUtils() {
-    }
 
     /**
      * @param sources 如多个参数有相同字段. 会优先使用前面的值

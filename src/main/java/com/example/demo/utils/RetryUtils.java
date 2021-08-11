@@ -1,13 +1,14 @@
 package com.example.demo.utils;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.function.Supplier;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Slf4j
 public class RetryUtils {
-    private RetryUtils() {
-    }
 
     public static <T> T retryable(Supplier<T> supplier) {
         return retryable(supplier, 3);

@@ -1,13 +1,15 @@
 package com.example.demo.utils;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DownloadUtils {
-    private DownloadUtils() {
-    }
 
     /**
      * 下载文件能正常显示中文
