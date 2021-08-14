@@ -22,7 +22,7 @@ public class RetryUtils {
                 times++;
                 log.warn("retryable失败, 已失败次数 times = {}", times, e);
                 if (times >= maxTimes) {
-                    throw new RuntimeException("调用retryable失败已达最大次数, msg = " + e.getMessage());
+                    throw new RuntimeException("调用retryable失败已达最大次数, msg = " + e.getMessage(), e);
                 }
             }
         }
