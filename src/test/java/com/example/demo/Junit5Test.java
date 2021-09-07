@@ -1,8 +1,9 @@
 package com.example.demo;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 import org.opentest4j.AssertionFailedError;
 
 import java.time.Duration;
@@ -71,10 +72,45 @@ public class Junit5Test {
         Thread.sleep(millis);
     }
 
-    @DisplayName("参数化测试")
+    @DisplayName("参数化测试-单个参数")
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void testParameterizedTest(int i) {
-        System.out.println("i = " + i);
+    @ValueSource(strings = {"str0", "str1"})
+    void testParameterizedTest(String s) {
+        System.out.println("s = " + s);
+    }
+
+    @DisplayName("参数化测试-empty参数")
+    @ParameterizedTest
+    @EmptySource
+    void testEmptySource(String s) {
+        System.out.println("s = " + s);
+        Assertions.assertEquals("", s);
+    }
+
+    @DisplayName("参数化测试-null参数")
+    @ParameterizedTest
+    @NullSource
+    void testNullSource(String s) {
+        System.out.println("s = " + s);
+        Assertions.assertNull(s);
+    }
+
+    @DisplayName("参数化测试-空参数")
+    @ParameterizedTest
+    @NullAndEmptySource
+    void testNullAndEmptySource(String s) {
+        System.out.println("s = " + s);
+        Assertions.assertTrue(StringUtils.isEmpty(s));
+    }
+
+    /**
+     * 对于@CsvSource, 空字符串用2个单引号表示'', null用空白表示
+     */
+    @DisplayName("参数化测试-多个参数")
+    @ParameterizedTest
+    @CsvSource({"a,1", "'',1", ",1"})
+    void testMultiValuesParameterizedTest(String s, boolean b) {
+        System.out.println("s = " + s);
+        System.out.println("b = " + b);
     }
 }
