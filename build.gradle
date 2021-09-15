@@ -15,7 +15,13 @@ configurations {
 }
 
 repositories {
+    //优先从本地maven仓库加载依赖
     mavenLocal()
+    //设置私有仓库
+//    maven {
+//        url "http://xxx.com/nexus/content/groups/public/"
+//        allowInsecureProtocol true
+//    }
     mavenCentral()
 }
 
